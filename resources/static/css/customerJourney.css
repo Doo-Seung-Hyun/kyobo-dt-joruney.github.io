@@ -321,6 +321,7 @@ section .title-msg .section-no{
     bottom: 0;
     left: -0.15em;
     line-height: 55px;
+    font-family: system-ui;
 }
 .img-content{
     background-position: 50% 50%;
