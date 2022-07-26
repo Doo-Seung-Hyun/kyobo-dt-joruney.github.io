@@ -188,6 +188,12 @@ const PageController = (function(){
             // 초기 스타일(css) 설정
             if(elem.animationProps['translate-x']!=null)
                 elem.style.transform = `translateX(${elem.animationProps['translate-x']})`;
+            if(elem.animationProps['position-left']!=null)
+                elem.style.transform = `translateX(${elem.animationProps['position-left']-elem.orgPositionLeft}px)`;
+            if(elem.animationProps['position-right']!=null)
+                elem.style.transform = `translateX(${document.body.clientWidth-elem.animationProps['translate-x']-elem.clientWidth})`;
+            if(elem.animationProps['scale']!=null)
+                elem.style.transform = `scale(${elem.animationProps['scale']})`;
             if(elem.animationProps['opacity']!=null)
                 elem.style.opacity = elem.animationProps['opacity'];
         }
@@ -218,7 +224,7 @@ const PageController = (function(){
         }
 
         function animateOpacity(elem, progress, opacity){
-            elem.style.opacity = (1-opacity)*progress+'';
+            elem.style.opacity = (opacity + (1-opacity)*progress)+'';
         }
     }
     function setScrollAnimation(){
